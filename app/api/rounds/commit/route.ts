@@ -20,7 +20,7 @@ export async function POST(_req: NextRequest) {
 
     await db.execute({
       sql: `INSERT INTO rounds (id, createdAt, status, nonce, commitHex, serverSeed, rows)
-            VALUES (?, ?, 'CREATED', ?, ?, ?, 12)`,
+            VALUES (?, ?, 'CREATED', ?, ?, ?, ?)`,
       args: [id, createdAt, nonce, commitHex, serverSeed, 12],
     });
 
