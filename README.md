@@ -134,15 +134,20 @@ daphnis-plinko-lab/
 All game state that doesn't have a dedicated column is serialised as JSON in the `result` TEXT column:
 
 ```
-rounds table (Turso)
-├── id          TEXT  PRIMARY KEY
-├── serverSeed  TEXT  — hidden from client until REVEALED
-├── clientSeed  TEXT  — set on /start
-├── nonce       INTEGER
-├── dropColumn  INTEGER — set on /start
-└── result      TEXT  — JSON: { commitHex, combinedSeed, pegMapHash, status,
-                               rows, binIndex, payoutMultiplier, betCents,
-                               decisions[], createdAt, revealedAt }
+rounds table
+
+- id: unique round identifier
+- commitHex: hash of (serverSeed + nonce) for fairness
+- serverSeed: revealed after round completion
+- clientSeed: provided by user
+- combinedSeed: derived seed for randomness
+- rows: number of plinko rows
+- dropColumn: initial drop position
+- binIndex: final bin result
+- payoutMultiplier: calculated payout
+- pathJson: ball path decisions
+- status: CREATED → STARTED → REVEALED
+- createdAt / revealedAt: timestamps
 ```
 
 ---
