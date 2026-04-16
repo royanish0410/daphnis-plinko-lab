@@ -40,7 +40,7 @@ npm run dev                   # http://localhost:3000
 
 **For local SQLite dev (no Turso account needed):**
 ```bash
-TURSO_DATABASE_URL=libsql://plinko-db-royanish0410.aws-ap-south-1.turso.io
+TURSO_DATABASE_URL=file:./plinko.db
 ```
 
 ### Scripts
@@ -249,7 +249,7 @@ Edges pay highest (16×), center carries the house edge (0.5×). Fully symmetric
 
 ## Where / How I Used AI
 
-This project was built using **git (claude-sonnet-4-6, Anthropic)** as a pair-programming assistant throughout. Here is an honest, detailed account of every area where AI was used, what was kept, and what was changed.
+This project was built using **Claude (claude-sonnet-4-6, Anthropic)** as a pair-programming assistant throughout. Here is an honest, detailed account of every area where AI was used, what was kept, and what was changed.
 
 ### 1. xorshift32 PRNG implementation and test vector verification
 
